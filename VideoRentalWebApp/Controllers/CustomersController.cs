@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,30 +10,33 @@ namespace VideoRentalWebApp.Controllers
 {
     public class CustomersController : Controller
     {
+        public ApplicationDbContext _Context;
+
+        public CustomersController()
+        {
+            _Context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _Context.Dispose();
+        }
+
         public ViewResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _Context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
         }
 
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _Context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
-        }
-
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, Name = "John Smith" },
-                new Customer { Id = 2, Name = "Mary Williams" }
-            };
         }
     }
 }
