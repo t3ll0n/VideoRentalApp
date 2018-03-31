@@ -1,8 +1,5 @@
-#navbar {
-    padding-top:25px; 
-	padding-bottom:25px;
-}
-
 .navbar {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
+	padding-top: 25px; 
+	padding-bottom: 25px;
 }
