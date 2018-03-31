@@ -10,28 +10,28 @@ namespace VideoRentalWebApp.Controllers
 {
     public class CustomersController : Controller
     {
-        public ApplicationDbContext _Context;
+        private ApplicationDbContext _context;
 
         public CustomersController()
         {
-            _Context = new ApplicationDbContext();
+            _context = new ApplicationDbContext();
         }
 
         protected override void Dispose(bool disposing)
         {
-            _Context.Dispose();
+            _context.Dispose();
         }
 
         public ViewResult Index()
         {
-            var customers = _Context.Customers.Include(c => c.MembershipType).ToList();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
         }
 
         public ActionResult Details(int id)
         {
-            var customer = _Context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();

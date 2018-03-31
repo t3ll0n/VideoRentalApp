@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 
 namespace VideoRentalWebApp.Models
@@ -15,5 +16,6 @@ namespace VideoRentalWebApp.Models
         public bool IsSubscribedToNewsletter { get; set; }
         public MembershipTypes MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
+        public DateTime? Birthdate { get; set; }
     }
 }
