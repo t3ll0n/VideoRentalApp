@@ -25,7 +25,6 @@ namespace VideoRentalWebApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                      "~/Content/VideoRentalWebApp.css",
                       "~/Content/site.css"));
 
         }

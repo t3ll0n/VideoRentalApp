@@ -10,7 +10,7 @@ namespace VideoRentalWebApp.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a customer name.")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -26,6 +26,7 @@ namespace VideoRentalWebApp.Models
         public DateTime ReleaseDate { get; set; }
 
         [Display(Name = "Number in Stock")]
+        [Range(1,20)]
         public byte NumberInStock { get; set; }
     }
 }
