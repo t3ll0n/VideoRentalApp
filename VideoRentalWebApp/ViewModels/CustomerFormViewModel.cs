@@ -6,7 +6,7 @@ using VideoRentalWebApp.Models;
 
 namespace VideoRentalWebApp.ViewModels
 {
-    public class NewCustomerViewModel
+    public class CustomerFormViewModel
     {
         public IEnumerable<MembershipTypes> MembershipTypes { get; set; }
         public Customer Customer { get; set; }
