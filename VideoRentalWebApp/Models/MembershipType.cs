@@ -6,7 +6,7 @@ using System.Web;
 
 namespace VideoRentalWebApp.Models
 {
-    public class MembershipTypes
+    public class MembershipType
     {
         public byte Id { get; set; }
         [Required]
